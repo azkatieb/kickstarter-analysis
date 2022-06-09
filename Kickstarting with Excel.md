@@ -13,32 +13,32 @@ In order to set up the worksheet to help analyze the data, I went through each c
 
 First, Column N included Category and Subcategory and because the formatting was consistent, I used the Text to Columns function to separate the Category from Subcategory to make it visually easier to sort and filter the data. 
 
-(Screenshot)
 ![Text to Column Screenshot](./resources/Text%20to%20Column%20SS.png)
 
 Second, I converted the dates in the Date Creates and Date Ended columns to a more readable "Short Date" format. For the Date Created Conversion, in a new column (S), I inserted the following formula =(((J2/60)/60)/24)+DATE(1970,1,1). The formula was created to convert the Unix date value in Cell J2 to a Short Date form in Column S. I used the same formula to convert Column I to a short date form for the Date Ended Conversion. 
 
 
-(Screenshot)
-![alt](./resources/Date%20Created%20Conversion%20SS.png)
+![Date Created Conversion Screenshot](./resources/Date%20Created%20Conversion%20SS.png)
 
 In column U, I used the YEAR() formula to convert the short date in column S to just show us the year that the Kickstarter ran. This will allow me to use the Years column in my PivotTable when displaying the outcomes by launch date. 
 
-(Screenshot)
+![Year Function Screenshot](./resources/Year%20Formula%20SS.png)
 
 ### Analysis of Outcomes Based on Launch Date
 
 Now that the data was formatted the way I needed, I started the analysis. The first analysis I completed was for "Theater Outcomes Based on Launch Date". I created a PivotTable using all of the data from my Kickstarter sheet. I placed the Parent Category and Years in the filters section, Outcomes in the Series section, Date Created Conversion in the Categories section and lastly the count of outcomes in the Values section.
 
-(Screenshot)
+![PivotTable Screenshot](./resources/Theater%20Outcomes%20PivotTable%20SS.png)
 
 Next, I filtered the Parent Category to theater, as we were only reviewing theater plays for this analysis. I then filtered the Outcomes to eliminate live Kickstarters and they don't have complete data so it would skew the results of our analysis
 
-( 2 Screenshots)
+![Parent Category Filtering Screenshot](./resources/Parent%20Category%20Filtering%20SS.png)
+
+![Outcomes Filtering Screenshot](./resources/Outcomes%20Filtering%20SS.png)
 
 Once the PivotTable was sorted and filtered as described, I inserted a Line Chart with Markers to visualize that data. 
 
-(link chart)
+![Outcomes Based on Launch Date Line Chart](./resources/Theater_Outcomes_vs_Launch_Date.png)
 
 ### Analysis of Outcomes Based on Goals
 
@@ -46,17 +46,20 @@ I started out with creating a new worksheet for Outcomes Based on Goals and adde
 
 For the goal column, I listed out dollar amount ranges so that projects would be grouped by similar goals. After the basic table was created, I started to add formulas in the columns to get the output. The formula I used to find Number Successful was =COUNTIFS(Kickstarter!$D:$D,"<1000",Kickstarter!$F:$F,"successful",Kickstarter!$R:$R,"plays"). I wanted to count the number of kickstarters that had "successful" listed in column F, and "plays" listed in Column R (Subcategory) and satisfied the goal range listed in Column A which for this example was Less than $1000. Once that was completed, I was then able to copy the formula down for all of the goals listed. To ensure the reference stayed correct, I used the Absolute Reference for the range ("$F:$F"). 
 
-(Screenshot)
+![Countifs Formula Screenshot](./resources/Number%20Successful%20COUNTIFS%20Formula%20SS.png)
 
 Now that the COUNTIFS() formula worked for the successful outcomes, I was able to copy the formula into column C and adjust the absolute reference for column F to be "failed"  and followed the same formula structure as Column B. I did the same for Column D which was "canceled" plays. 
 
-(Screenshots2)
+![COUNTIFS Formula Screenshot Failed](./resources/Number%20Failed%20COUNTIFS%20Formula%20SS.png)
+![COUNTIFS Canceled Formula Screenshot](./resources/Number%20Canceled%20COUNTIFS%20Formula%20SS.png)
 
 For Column E - "Total Projects" I took the sum of columns B, C, and D and then copied the formula down for all of the goals. In row 14, I used the sum formula to total each column so I could gut check my numbers along the way. 
 
 To find the Percentage Successful, Failed and Canceled in Columns, F, G and H - I used the formula Number of Projects divided by the total for each category of successful, failed and canceled. 
 
 Once the table was completed, I inserted a line chart to visualize the Outcomes Based on the Goal. 
+
+![Outcomes Based on Goals Line Chart](./resources/Outcomes_vs_Goals.png)
 
 ### Challenges and Difficulties Encountered
 
