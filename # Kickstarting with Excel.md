@@ -14,6 +14,7 @@ In order to set up the worksheet to help analyze the data, I went through each c
 First, Column N included Category and Subcategory and because the formatting was consistent, I used the Text to Columns function to separate the Category from Subcategory to make it visually easier to sort and filter the data. 
 
 (Screenshot)
+![Text to Column Screenshot](./resources/Text%20to%20Column%20SS.png)
 
 Second, I converted the dates in the Date Creates and Date Ended columns to a more readable "Short Date" format. For the Date Created Conversion, in a new column (S), I inserted the following formula =(((J2/60)/60)/24)+DATE(1970,1,1). The formula was created to convert the Unix date value in Cell J2 to a Short Date form in Column S. I used the same formula to convert Column I to a short date form for the Date Ended Conversion. 
 
